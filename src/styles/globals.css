@@ -1,0 +1,794 @@
+
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  /* Albertsons Blue Palette */
+  --albertsons-blue: #0066CC;
+  --albertsons-blue-light: #4A90E2;
+  --albertsons-blue-lighter: #87CEEB;
+  --albertsons-blue-dark: #004499;
+  --albertsons-cyan: #00BCD4;
+  --albertsons-cyan-light: #4DD0E1;
+  --albertsons-gradient: linear-gradient(135deg, #0066CC 0%, #4A90E2 100%);
+  --albertsons-gradient-light: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+  
+  --background: #F8FAFC;
+  --foreground: #1E293B;
+  --card: #ffffff;
+  --card-foreground: #1E293B;
+  --popover: #ffffff;
+  --popover-foreground: #1E293B;
+  --primary: var(--albertsons-blue);
+  --primary-foreground: #ffffff;
+  --secondary: #E3F2FD;
+  --secondary-foreground: var(--albertsons-blue-dark);
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #E3F2FD;
+  --accent-foreground: var(--albertsons-blue);
+  --destructive: #EF4444;
+  --destructive-foreground: #ffffff;
+  --border: #E2E8F0;
+  --input: transparent;
+  --input-background: #F8FAFC;
+  --switch-background: #CBD5E1;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: var(--albertsons-blue-light);
+  --chart-1: var(--albertsons-blue);
+  --chart-2: var(--albertsons-cyan);
+  --chart-3: var(--albertsons-blue-light);
+  --chart-4: var(--albertsons-cyan-light);
+  --chart-5: var(--albertsons-blue-lighter);
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1E293B;
+  --sidebar-primary: var(--albertsons-blue);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #F1F5F9;
+  --sidebar-accent-foreground: var(--albertsons-blue);
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: var(--albertsons-blue-light);
+}
+
+.dark {
+  /* Dark mode with Albertsons blue accents */
+  --background: #0F172A;
+  --foreground: #F8FAFC;
+  --card: #1F2937;
+  --card-foreground: #F8FAFC;
+  --popover: #1E293B;
+  --popover-foreground: #F8FAFC;
+  --primary: var(--albertsons-blue-light);
+  --primary-foreground: #ffffff;
+  --secondary: #334155;
+  --secondary-foreground: #F8FAFC;
+  --muted: #334155;
+  --muted-foreground: #94A3B8;
+  --accent: #334155;
+  --accent-foreground: var(--albertsons-blue-light);
+  --destructive: #EF4444;
+  --destructive-foreground: #F8FAFC;
+  --border: #334155;
+  --input: #334155;
+  --input-background: #1E293B;
+  --ring: var(--albertsons-blue-light);
+  --chart-1: var(--albertsons-blue-light);
+  --chart-2: var(--albertsons-cyan);
+  --chart-3: var(--albertsons-blue-lighter);
+  --chart-4: var(--albertsons-cyan-light);
+  --chart-5: #87CEEB;
+  --sidebar: #1E293B;
+  --sidebar-foreground: #F8FAFC;
+  --sidebar-primary: var(--albertsons-blue-light);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #334155;
+  --sidebar-accent-foreground: #F8FAFC;
+  --sidebar-border: #334155;
+  --sidebar-ring: var(--albertsons-blue-light);
+}
+
+@theme inline {
+  --breakpoint-xs: 400px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Remove gradient background-image in dark theme */
+.dark .bg-gradient-to-br {
+  background-image: none !important;
+}
+
+/* Line clamp utilities for better mobile text handling */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Enhanced text truncation for app names */
+.app-name-truncate {
+  word-break: break-word;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+/* Single line truncate with ellipsis */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Force better line clamping for problematic screen sizes */
+.line-clamp-2-force {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  white-space: normal !important;
+  max-width: 100% !important;
+}
+
+/* Additional line clamp utility for strict control */
+.line-clamp-strict {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  line-height: 1.2 !important;
+  max-height: calc(1.2em * 2) !important;
+  word-break: break-word !important;
+  hyphens: auto !important;
+}
+
+/* Enhanced mobile touch targets */
+@media (max-width: 768px) {
+  button {
+    min-height: 44px; /* iOS recommendation for touch targets */
+  }
+  
+  /* Better mobile spacing */
+  .mobile-optimized {
+    padding: 0.75rem;
+  }
+  
+  /* Prevent text overflow on small screens */
+  .truncate-mobile {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+}
+
+/* Very small screens optimization */
+@media (max-width: 640px) {
+  /* Ensure app names are properly truncated with ellipsis */
+  .app-card h3 {
+    font-size: 0.875rem !important; /* 14px */
+    line-height: 1.25 !important;
+    color: inherit !important;
+    display: block !important;
+  }
+  
+  .app-card .app-name-truncate {
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+  
+  .app-card p {
+    font-size: 0.75rem !important; /* 12px */
+    display: block !important;
+  }
+  
+  /* Button optimization for small screens */
+  .app-card button {
+    min-height: 32px !important;
+    font-size: 0.75rem !important;
+    padding: 0.375rem 0.75rem !important;
+  }
+  
+  /* Ensure proper spacing in horizontal layout */
+  .app-card {
+    min-height: 5rem !important; /* 80px */
+  }
+  
+  /* Inline navigation optimization for small screens */
+  .inline-nav-small {
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Category button mobile optimization */
+  .category-btn-mobile {
+    width: 2rem !important; /* 32px */
+    height: 2rem !important; /* 32px */
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* App count mobile styling */
+  .app-count-mobile {
+    font-size: 0.75rem !important; /* 12px */
+    white-space: nowrap !important;
+  }
+}
+
+/* Android Medium (700w × 840h) and similar tablet optimization */
+@media (min-width: 641px) and (max-width: 767px) {
+  /* Optimal grid layout for medium tablets */
+  .app-card-grid {
+    gap: 1rem !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  /* Perfect card proportions for 700px width */
+  .app-card {
+    min-height: 11rem !important; /* 176px */
+    max-height: 11rem !important;
+  }
+  
+  /* Optimized text sizing for medium screens */
+  .app-card h3 {
+    font-size: 0.875rem !important; /* 14px - reduced from 14.4px */
+    line-height: 1.2 !important; /* tighter line height */
+  }
+  
+  .app-card .app-name-truncate {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    word-break: break-word !important;
+  }
+  
+  /* Force better line clamping for medium tablets */
+  .app-card .line-clamp-2 {
+    -webkit-line-clamp: 2 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-height: 2.1rem !important; /* ~2 lines at 1.2 line-height */
+  }
+  
+  .app-card p {
+    font-size: 0.75rem !important; /* 12px - reduced from 12.8px */
+  }
+  
+  /* Button sizing for medium screens */
+  .app-card button {
+    min-height: 36px !important;
+    font-size: 0.8rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+  
+  /* Header optimization for medium screens */
+  .header-nav {
+    gap: 1.5rem !important;
+  }
+  
+  /* Side panel width optimization */
+  .side-panel-medium {
+    width: 320px !important;
+  }
+  
+  /* Better spacing for category filters */
+  .category-filter {
+    padding: 0.75rem !important;
+  }
+  
+  /* Improved tab navigation */
+  .tab-navigation {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Main content padding optimization */
+  .apps-main-content {
+    padding: 0.75rem !important;
+  }
+  
+  /* Tab buttons spacing */
+  .tab-buttons {
+    gap: 0.25rem !important;
+    padding: 0.25rem !important;
+  }
+  
+  /* Inline navigation spacing */
+  .inline-nav-controls {
+    gap: 0.5rem !important;
+  }
+  
+  /* Grid with side panel open */
+  .app-card-grid.with-side-panel {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Inline navigation for medium screens */
+  .inline-nav-medium {
+    flex-wrap: nowrap !important;
+    gap: 0.75rem !important;
+  }
+}
+
+/* Specific optimization for 652px width and similar (650px-680px) */
+@media (min-width: 650px) and (max-width: 680px) {
+  .app-card {
+    min-height: 10.5rem !important; /* 168px - smaller for better fit */
+    max-height: 10.5rem !important;
+  }
+  
+  /* Very conservative text sizing to prevent cutoff */
+  .app-card h3 {
+    font-size: 0.8rem !important; /* 12.8px */
+    line-height: 1.15 !important;
+  }
+  
+  .app-card p {
+    font-size: 0.7rem !important; /* 11.2px */
+    line-height: 1.2 !important;
+  }
+  
+  /* Strict line clamp to prevent overflow */
+  .app-card .line-clamp-2 {
+    max-height: 1.84rem !important; /* ~2 lines at 1.15 line-height */
+    -webkit-line-clamp: 2 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  /* Ensure proper button sizing */
+  .app-card button {
+    min-height: 28px !important;
+    font-size: 0.7rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+  
+  /* Tighter grid spacing for this width */
+  .app-card-grid {
+    gap: 0.75rem !important;
+  }
+}
+
+/* Large tablets and small desktop optimization (768px - 1200px) */
+@media (min-width: 768px) and (max-width: 1200px) {
+  /* Optimal grid layout for large tablets */
+  .app-card-grid {
+    gap: 1.25rem !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  
+  /* Card proportions for 1014px and similar widths */
+  .app-card {
+    min-height: 12rem !important; /* 192px */
+    max-height: 12rem !important;
+  }
+  
+  /* Enhanced text sizing to prevent cutting */
+  .app-card h3 {
+    font-size: 0.875rem !important; /* 14px */
+    line-height: 1.2 !important;
+  }
+  
+  .app-card .app-name-truncate {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    word-break: break-word !important;
+  }
+  
+  /* Force proper truncation for long app names */
+  .app-card .line-clamp-2 {
+    -webkit-line-clamp: 2 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  .app-card p {
+    font-size: 0.75rem !important; /* 12px */
+    line-height: 1.3 !important;
+  }
+  
+  /* Button sizing for large tablets */
+  .app-card button {
+    min-height: 32px !important;
+    font-size: 0.75rem !important;
+    padding: 0.375rem 0.75rem !important;
+  }
+  
+  /* Better text spacing */
+  .app-card .app-name-truncate span {
+    line-height: 1.2 !important;
+  }
+  
+  /* Grid with side panel open for large tablets */
+  .app-card-grid.with-side-panel {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Medium desktop optimization (1200px - 1400px) - For screens like 1324x852 */
+@media (min-width: 1200px) and (max-width: 1400px) {
+  /* Optimal grid layout for medium desktop */
+  .app-card-grid {
+    gap: 1.5rem !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+  
+  /* Card proportions for 1324px and similar widths */
+  .app-card {
+    min-height: 12rem !important; /* 192px */
+    max-height: 12rem !important;
+  }
+  
+  /* Critical: Ensure long app names are properly truncated with ellipsis */
+  .app-card h3 {
+    font-size: 0.875rem !important; /* 14px */
+    line-height: 1.15 !important; /* Tighter line height for better fit */
+    max-height: 2.3rem !important; /* Exactly 2 lines */
+  }
+  
+  .app-card .app-name-truncate {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    word-break: break-word !important;
+    hyphens: auto !important;
+  }
+  
+  /* CRITICAL: Force proper ellipsis for long names like "JetBrains IntelliJ IDEA" */
+  .app-card .app-name-ellipsis {
+    -webkit-line-clamp: 2 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    word-break: break-word !important;
+    hyphens: auto !important;
+    line-height: 1.15 !important;
+    max-height: 2.3rem !important; /* Exactly 2 lines at 1.15 line-height */
+  }
+  
+  .app-card p {
+    font-size: 0.75rem !important; /* 12px */
+    line-height: 1.2 !important;
+  }
+  
+  /* Button sizing for medium desktop */
+  .app-card button {
+    min-height: 32px !important;
+    font-size: 0.8rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+  
+  /* Grid with side panel open for medium desktop */
+  .app-card-grid.with-side-panel {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Specific fix for 1324px width screens (like the user's case) */
+@media (min-width: 1320px) and (max-width: 1330px) {
+  /* Ensure app names with ellipsis work perfectly */
+  .app-card h3 {
+    font-size: 0.8rem !important; /* Slightly smaller for better fit */
+    line-height: 1.1 !important; /* Even tighter */
+    max-height: 2.2rem !important; /* Tight constraint */
+  }
+  
+  /* Super aggressive text truncation for problematic names */
+  .app-card .app-name-ellipsis {
+    -webkit-line-clamp: 2 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+    line-height: 1.1 !important;
+    max-height: 2.2rem !important;
+    white-space: normal !important;
+  }
+}
+
+/* Specific optimization for ~1014px width screens */
+@media (min-width: 900px) and (max-width: 1100px) {
+  .app-card {
+    min-height: 11.5rem !important; /* 184px */
+    max-height: 11.5rem !important;
+  }
+  
+  /* More aggressive text truncation for this range */
+  .app-card h3 {
+    font-size: 0.8rem !important; /* 12.8px */
+    line-height: 1.15 !important;
+  }
+  
+  .app-card p {
+    font-size: 0.7rem !important; /* 11.2px */
+    line-height: 1.2 !important;
+  }
+  
+  /* Ensure ellipsis works properly */
+  .app-card .line-clamp-2 {
+    max-height: 2.3rem !important; /* ~2 lines at 1.15 line-height */
+    overflow: hidden !important;
+  }
+}
+
+/* Responsive text sizing for iPhone SE and smaller devices */
+@media (max-width: 375px) {
+  .text-responsive-xs {
+    font-size: 0.7rem;
+  }
+  
+  .text-responsive-sm {
+    font-size: 0.8rem;
+  }
+  
+  /* Better spacing for very small screens */
+  .spacing-xs {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* iPhone 6 Plus specific optimizations */
+@media (max-width: 414px) and (max-height: 736px) {
+  .card-responsive {
+    padding: 0.75rem;
+  }
+  
+  .icon-responsive {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+/* CRITICAL FIX: Robust text truncation with ellipsis for all app names */
+.app-name-ellipsis {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  word-break: break-word !important;
+  hyphens: auto !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  line-height: 1.15 !important;
+  max-height: calc(1.15em * 2) !important;
+}
+
+/* Ensure ellipsis works even with very long single words */
+.app-name-ellipsis-force {
+  word-break: break-all !important;
+  overflow-wrap: anywhere !important;
+  hyphens: auto !important;
+}
+
+/* Force select dropdown to stay aligned to the right */
+[data-radix-select-content] {
+  transform-origin: var(--radix-select-content-transform-origin) !important;
+}
+
+/* Specific override for pagination select dropdown */
+.pagination-select [data-radix-select-content] {
+  right: 0 !important;
+  left: auto !important;
+  transform-origin: top right !important;
+}
+
+/* Additional specificity for radix select positioning */
+.pagination-select [data-radix-popper-content-wrapper] {
+  transform-origin: top right !important;
+}
+
+/* Force the select content to stay within bounds and align right */
+.pagination-select [data-radix-select-content] {
+  max-width: none !important;
+  min-width: max-content !important;
+  width: auto !important;
+}
+
+
+
+/* CRITICAL FIX: Prevent app name duplication at ALL screen sizes */
+/* Mobile first: show truncate span by default */
+.app-card h3 .hidden.sm\\:block {
+  display: none !important;
+}
+
+.app-card h3 .block.sm\\:hidden {
+  display: block !important;
+}
+
+/* Desktop: show line-clamp span at 640px and above */
+@media (min-width: 640px) {
+  .app-card h3 .block.sm\\:hidden {
+    display: none !important;
+  }
+  
+  .app-card h3 .hidden.sm\\:block {
+    display: block !important;
+  }
+}
+
+/* Clean app card layout */
+.app-card-optimized {
+  display: flex;
+  flex-direction: column;
+}
+
+/* App grid responsive heights for consistent box appearance */
+.app-card-grid {
+  grid-auto-rows: 1fr; /* Ensures all cards in a row have the same height */
+}
+
+/* Responsive card heights for different screen sizes */
+@media (max-width: 640px) {
+  .app-card-height {
+    min-height: 11rem; /* h-44 */
+    max-height: 11rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 768px) {
+  .app-card-height {
+    min-height: 12rem; /* h-48 */
+    max-height: 12rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .app-card-height {
+    min-height: 13rem; /* h-52 */
+    max-height: 13rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-card-height {
+    min-height: 14rem; /* h-56 */
+    max-height: 14rem;
+  }
+}
+
+
+
+
+
+

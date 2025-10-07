@@ -54,25 +54,6 @@ npm install
 # Start development server
 npm run dev
 
-
-## 📁 Project Structure
-
-```
-src/
-├── app/                 # Next.js App Router
-│   ├── api/            # API routes
-│   ├── layout.tsx      # Root layout
-│   └── page.tsx        # Home page
-├── components/         # React components
-│   ├── ui/            # Shadcn/ui components
-│   └── [other]/       # Feature components
-├── services/          # API services
-├── types/             # TypeScript types
-├── data/              # Mock data
-├── config/            # Configuration
-└── styles/            # Global styles
-```
-
 ## 🎨 Design System
 
 - **Primary Color**: Albertsons Blue (#0066CC)

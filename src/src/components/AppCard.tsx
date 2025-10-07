@@ -116,9 +116,6 @@ export function AppCard({ app, onInstall, onRequest, onClick, isSelected }: AppC
         {/* App name */}
         <div className="mb-1 sm:mb-2 flex-shrink-0">
           <h3 className="app-name-truncate font-medium text-gray-900 dark:text-white leading-tight text-sm sm:text-sm md:text-base overflow-hidden">
-            <span className="block sm:hidden truncate" title={app.name}>
-              {app.name}
-            </span>
             <span className="hidden sm:block line-clamp-2 line-clamp-2-force line-clamp-strict" title={app.name}>
               {app.name}
             </span>

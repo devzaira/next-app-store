@@ -1,22 +1,23 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  // Enable standalone output for Docker deployment
-  output: 'standalone',
+  // Remove standalone output for Vercel deployment
+  // output: 'standalone', // Only needed for Docker, not Vercel
   
-  experimental: {
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
-  },
+  // Disable turbopack experimental features for better compatibility
+  // experimental: {
+  //   turbo: {
+  //     rules: {
+  //       '*.svg': {
+  //         loaders: ['@svgr/webpack'],
+  //         as: '*.js',
+  //       },
+  //     },
+  //   },
+  // },
+  
   images: {
-    domains: ['images.unsplash.com'],
-    // Allow unsplash images in production
+    // Use remotePatterns instead of domains (domains is deprecated)
     remotePatterns: [
       {
         protocol: 'https',
@@ -24,6 +25,18 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+  },
+  
+  // Ensure TypeScript checking during build
+  typescript: {
+    // Don't fail build on type errors in development
+    ignoreBuildErrors: false,
+  },
+  
+  // Ensure ESLint checking during build
+  eslint: {
+    // Don't fail build on ESLint errors in development
+    ignoreDuringBuilds: false,
   },
 };
 

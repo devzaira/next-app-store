@@ -108,10 +108,6 @@ export function AppCard({ app, onInstall, onRequest, onClick, isSelected }: AppC
       <div className="flex-1 flex flex-col justify-center sm:text-center text-left min-h-0 overflow-hidden sm:mb-2 md:mb-3">
         {/* App Name - PROMINENT AND READABLE WITH ELLIPSIS */}
         <h3 className="app-name-truncate font-medium text-gray-900 dark:text-white leading-tight mb-1 sm:mb-2 text-sm sm:text-sm md:text-base overflow-hidden">
-          {/* Mobile: Single line truncate */}
-          <span className="block sm:hidden truncate" title={app.name}>
-            {app.name}
-          </span>
           {/* Desktop: Multi-line with ellipsis - Enhanced for long names */}
           <span className="hidden sm:block app-name-ellipsis app-name-ellipsis-force" title={app.name}>
             {app.name}

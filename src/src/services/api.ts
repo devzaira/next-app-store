@@ -273,7 +273,7 @@ export const requestsApi = {
         appId: data.appId,
         appName: data.appName,
         reason: data.reason,
-        status: 'open',
+        status: 'requested',
         requestedAt: new Date().toISOString(),
         estimatedDeliveryDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
         requestNumber: `REQ-${Date.now().toString().slice(-6)}`,

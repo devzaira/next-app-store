@@ -118,15 +118,15 @@ export function RequestsTable({
                          (request.requestNumber || `REQ-${request.id.toUpperCase()}`).toLowerCase().includes(searchQuery.toLowerCase());
     
     if (activeTab === 'all') return matchesSearch;
-    if (activeTab === 'open') return matchesSearch && request.status === 'open';
+    if (activeTab === 'requested') return matchesSearch && request.status === 'requested';
     return matchesSearch && request.status === activeTab;
   });
 
-  // Sort requests - prioritize 'open' status, then by selected field
+  // Sort requests - prioritize 'requested' status, then by selected field
   const sortedRequests = [...filteredRequests].sort((a, b) => {
-    // First priority: open status items on top
-    if (a.status === 'open' && b.status !== 'open') return -1;
-    if (b.status === 'open' && a.status !== 'open') return 1;
+    // First priority: requested status items on top
+    if (a.status === 'requested' && b.status !== 'requested') return -1;
+    if (b.status === 'requested' && a.status !== 'requested') return 1;
     
     // Second priority: sort by selected field
     const aValue = a[sortField];
@@ -170,11 +170,11 @@ export function RequestsTable({
 
   const getStatusBadge = (status: AppRequest['status']) => {
     switch (status) {
-      case 'open':
+      case 'requested':
         return (
           <Badge className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 border-yellow-300">
             <Clock className="w-3 h-3 mr-1" />
-            Open
+            Requested
           </Badge>
         );
 
@@ -248,7 +248,7 @@ export function RequestsTable({
   const getRequestCounts = () => {
     return {
       all: requests.length,
-      open: requests.filter(r => r.status === 'open').length,
+      requested: requests.filter(r => r.status === 'requested').length,
       delivered: requests.filter(r => r.status === 'delivered').length
     };
   };
@@ -306,21 +306,21 @@ export function RequestsTable({
             </Badge>
           </Button>
           <Button
-            variant={activeTab === 'open' ? 'default' : 'ghost'}
-            onClick={() => onTabChange('open')}
+            variant={activeTab === 'requested' ? 'default' : 'ghost'}
+            onClick={() => onTabChange('requested')}
             className={`flex-1 relative text-xs md:text-sm transition-all duration-200 ${
-              activeTab === 'open' 
+              activeTab === 'requested' 
                 ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white' 
                 : 'text-blue-700 dark:text-white hover:bg-blue-200 dark:hover:bg-gray-600 hover:shadow-md hover:scale-105'
             }`}
             size="sm"
           >
-            <span className="hidden sm:inline">Open</span>
-            <span className="sm:hidden">Open</span>
+            <span className="hidden sm:inline">Requested</span>
+            <span className="sm:hidden">Requested</span>
             <Badge variant="secondary" className={`ml-1 md:ml-2 h-4 md:h-5 px-1 md:px-2 text-xs ${
-              activeTab === 'open' ? 'bg-white/20 text-white' : 'bg-blue-200 text-blue-800 dark:bg-gray-300 dark:text-gray-800'
+              activeTab === 'requested' ? 'bg-white/20 text-white' : 'bg-blue-200 text-blue-800 dark:bg-gray-300 dark:text-gray-800'
             }`}>
-              {counts.open}
+              {counts.requested}
             </Badge>
           </Button>
           <Button
@@ -610,7 +610,7 @@ export function RequestsTable({
                                     <span className="text-gray-600 dark:text-gray-400">ServiceNow - Request Approved</span>
                                   </div>
                                   
-                                  {request.status === 'open' && (
+                                  {request.status === 'requested' && (
                                     <>
                                       <div className="flex items-center space-x-2 text-xs">
                                         <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>

@@ -31,7 +31,7 @@ export interface AppRequest {
   appId: string;
   appName: string;
   reason: string;
-  status: 'open' | 'delivered' | 'rejected' | 'cancelled';
+  status: 'requested' | 'delivered' | 'rejected' | 'cancelled';
   requestedAt: string;
   completedAt?: string;
   estimatedDeliveryDate?: string;
@@ -41,4 +41,4 @@ export interface AppRequest {
 
 export type ViewMode = 'apps' | 'requests';
 export type TabType = 'all' | 'free' | 'paid';
-export type RequestTabType = 'all' | 'open' | 'delivered';
+export type RequestTabType = 'all' | 'requested' | 'delivered';

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Loader2, CheckCircle } from 'lucide-react';
 import { Button } from './ui/button';
-import { Badge } from './ui/badge';
 import { App } from '../types';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
